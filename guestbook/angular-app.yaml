@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp1-deploy
+spec:
+  selector:
+    matchLabels:
+      app: webapp1
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: webapp1
+    spec:
+      containers:
+      - name: webapp1
+        image: houssemdocker/angularapp-docker-ci-npm-nginx:546
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: webapp1-svc
+spec:
+  selector:
+    app: webapp1
+  ports:
+  - port: 80
+  type: LoadBalancer # NodePort # 
