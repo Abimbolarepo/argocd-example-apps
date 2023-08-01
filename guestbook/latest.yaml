@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: app1-deployment
   labels:
-    app: apache2
+    app: httpd
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: apache2
+      app: httpd
   template:
     metadata:
       labels:
-        app: apache2
+        app: httpd
     spec:
       containers:
-      - name: apacha2
-        image: apache2
+      - name: httpd
+        image: httpd
         ports:
         - containerPort: 80
 ---
@@ -26,7 +26,7 @@ metadata:
   name: app1-service
 spec:
   selector:
-    app: apache2
+    app: httpd
   ports:
     - protocol: TCP
       port: 80
