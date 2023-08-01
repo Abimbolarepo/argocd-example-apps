@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: httpd
+        image: jenkins/jenkins
         ports:
         - containerPort: 80
 ---
